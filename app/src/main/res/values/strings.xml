@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">t{K}now</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_send">Send</string>
+    <string-array name="main_activity_tabs">
+        <item>Quiz</item>
+        <item>Friends</item>
+    </string-array>
+    <string name="sample_message">This is a sample message just to check the view.....</string>
+
+
+    <string name="title_activity_signup">Signup</string>
+    <string name="Name">Name</string>
+    <string name="signup">Signup</string>
+    <string name="clear">Reset</string>
+    <string name="mail">e-mail</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone No.</string>
+    <string name="institution">Institution</string>
+    <string name="place">Place</string>
+    <string name="emptyFieldMessage">Some fields are left empty please fill them..!</string>
+    <string name="signupSuccessMessage">You have been signed up Successfully.\nPlease check your mail for confirmation.\nTry the spam box or trash if you don\'t receive the mail.</string>
+    <string name="signupErrorMessage">Please check your Internet connection.</string>
+    <string name="loginErrorMessage">Please check your Internet connection.</string>
+    <string name="loginWrongDetailsMessage">E-mail or Password is incorrect.</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="title_activity_forgot_password">Forgot Password</string>
+    <string name="forgot_password_message">Please follow the istructions sent to your mail id.</string>
+    <string name="forgot_password_success">A mail has been sent to your mail id.\nIt may take some time to reach you.</string>
+    <string name="forgot_password_not_found">The mail id was not found.</string>
+    <string name="forgot_password_error">Something went wrong please try again.</string>
+
+    <string name="action_logout">Logout</string>
+
+    <string name="privacy_and_terms">I Agree to the terms and conditions and privacy statements.</string>
+    <string name="contacts_data">Your contact details will not be visible to anyone.</string>
+
+    <string name="trydevs_link">http://www.trydevs.in</string>
+    <string name="sundar">Sundareswaran</string>
+    <string name="developer">Developer,</string>
+    <string name="email">sundareswaran@trydevs.in</string>
+    <string name="time">12-2-2015,13:29</string>
+    <string name="imageDescription">Image</string>
+    <string name="title">Post Title</string>
+    <string name="gcm_defaultSenderId" />
+
+</resources>
