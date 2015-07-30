@@ -12,6 +12,18 @@ public class UrlLinkNames {
     public static String JSON_NAME = "name";
     public static String JSON_TITLE = "title";
 
+
+    public static String URL_BASE = "http://techknowlogy.trydevs.in/";
+    public static String URL_GCM_REGISTER = "gcm_register.php";
+
+    public static String getUrlBase() {
+        return URL_BASE;
+    }
+
+    public static String getUrlGcmRegister() {
+        return getUrlBase() + URL_GCM_REGISTER;
+    }
+
     public static String getJsonDate() {
         return JSON_DATE;
     }

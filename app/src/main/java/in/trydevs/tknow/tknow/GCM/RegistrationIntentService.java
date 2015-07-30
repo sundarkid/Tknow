@@ -22,15 +22,27 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.google.android.gms.gcm.GcmPubSub;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.HashMap;
 
+import in.trydevs.tknow.tknow.DataClasses.UrlLinkNames;
+import in.trydevs.tknow.tknow.Network.CustomRequest;
+import in.trydevs.tknow.tknow.Network.VolleySingleton;
 import in.trydevs.tknow.tknow.R;
+import in.trydevs.tknow.tknow.extras.MyApplication;
 
+import static com.android.volley.Request.Method.POST;
 
 public class RegistrationIntentService extends IntentService {
 
@@ -92,6 +104,22 @@ public class RegistrationIntentService extends IntentService {
      */
     private void sendRegistrationToServer(String token) {
         // Add custom implementation, as needed.
+        RequestQueue requestQueue = VolleySingleton.getInstance().getmRequestQueue();
+        HashMap<String, String> params = new HashMap<>();
+        params.put("token", token);
+        CustomRequest request = new CustomRequest(POST, UrlLinkNames.getUrlGcmRegister(), params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Toast.makeText(MyApplication.getAppContext(), response.toString(), Toast.LENGTH_LONG).show();
+                Log.d("registeration response", response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("registeration error", error.toString());
+            }
+        });
+        requestQueue.add(request);
     }
 
     /**

@@ -2,12 +2,14 @@ package in.trydevs.tknow.tknow.Activities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,9 +17,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -36,15 +35,13 @@ import in.trydevs.tknow.tknow.extras.SpacesItemDecoration;
 public class MainActivity extends AppCompatActivity {
 
 
-    RecyclerView recyclerView;
-    private Toolbar toolbar;
-    MyAdapterPost adapterPost;
-
-    // For gcm
-
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
+    RecyclerView recyclerView;
 
+    // For gcm
+    MyAdapterPost adapterPost;
+    private Toolbar toolbar;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
 
 
@@ -64,14 +61,6 @@ public class MainActivity extends AppCompatActivity {
         // Setting up Recycler View
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewMainActivity);
         List<Post> data = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Post post = new Post();
-            post.setName(getResources().getString(R.string.Name));
-            post.setDate(getResources().getString(R.string.time));
-            post.setMessage(getResources().getString(R.string.sample_message));
-            post.setTitle(getResources().getString(R.string.title));
-            data.add(post);
-        }
         MyApplication.getWritableDatabase().insertPostData(data);
         adapterPost = new MyAdapterPost(MainActivity.this, MyApplication.getWritableDatabase().getPostdata());
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
@@ -86,7 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 boolean sentToken = sharedPreferences
                         .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
                 if (!sentToken) {
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.sample_message), Toast.LENGTH_LONG).show();
+                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+                    alertBuilder.setTitle("Confirmation link mail.");
+                    alertBuilder.setMessage(getResources().getString(R.string.token_not_got));
+                    alertBuilder
+                            .setCancelable(false)
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    // Todo implement something when ok is clicked
+                                }
+                            });
+                    AlertDialog alertDialog = alertBuilder.create();
+                    alertDialog.show();
                 }
             }
         };

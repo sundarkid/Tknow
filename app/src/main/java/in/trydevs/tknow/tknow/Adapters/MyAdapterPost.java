@@ -2,7 +2,6 @@ package in.trydevs.tknow.tknow.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.net.URI;
-import java.net.URL;
 import java.util.List;
 
 import in.trydevs.tknow.tknow.DataClasses.Post;
 import in.trydevs.tknow.tknow.R;
-import in.trydevs.tknow.tknow.extras.MyApplication;
 
 /**
  * Created by Sundareswaran on 27-07-2015.
