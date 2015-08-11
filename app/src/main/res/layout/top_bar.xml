@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/primary_dark"
-    app:theme="@style/MyCustomToolBar"
-    app:popupTheme="@style/MyCustomToolBar">
+    android:paddingRight="@dimen/_8dp"
+    app:popupTheme="@style/MyCustomToolBar"
+    app:theme="@style/MyCustomToolBar">
 
 </android.support.v7.widget.Toolbar>

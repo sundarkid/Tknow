@@ -13,6 +13,7 @@ import android.widget.Toast;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_POST = "post";
+    public static final String TABLE_PEOPLE = "people";
 
     public static final String COLUMN_SNO = "sno";
     public static final String COLUMN_USER_ID = "user_id";
@@ -25,6 +26,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "date";
     public static final String COLUMN_MESSAGE = "message";
     public static final String COLUMN_IMAGE = "image";
+    public static final String COLUMN_URL = "url";
+
+    public static final String COLUMN_PEOPLE_ID = "people_id";
+    public static final String COLUMN_ABOUT = "message";
+    public static final String COLUMN_FACEBOOK_URL = "url_fb";
+    public static final String COLUMN_TWITTER_URL = "url_tweet";
 
     private static final String DB_NAME = "tknow";
     private static final int DB_VERSION = 1;
@@ -37,7 +44,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             COLUMN_TITLE + " TEXT, " +
             COLUMN_MESSAGE + " TEXT, " +
             COLUMN_IMAGE + " TEXT, " +
-            COLUMN_DATE + " TEXT " +
+            COLUMN_DATE + " TEXT, " +
+            COLUMN_URL + " TEXT " +
+            ");";
+
+    private static final String CREATE_TABLE_PEOPLE = "CREATE TABLE " + TABLE_PEOPLE + " ( " +
+            COLUMN_SNO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_NAME + " TEXT, " +
+            COLUMN_ABOUT + " TEXT, " +
+            COLUMN_IMAGE + " TEXT, " +
+            COLUMN_FACEBOOK_URL + " TEXT, " +
+            COLUMN_TWITTER_URL + " TEXT " +
             ");";
 
     private Context context;
@@ -53,6 +70,8 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         try {
             sqLiteDatabase.execSQL(CREATE_TABLE_POSTS);
             Log.d("Table created", TABLE_POST);
+            sqLiteDatabase.execSQL(CREATE_TABLE_PEOPLE);
+            Log.d("Table created", TABLE_PEOPLE);
         } catch (SQLiteException exception) {
             Toast.makeText(context, exception.toString(), Toast.LENGTH_SHORT).show();
             Log.d("sql create exception", exception.toString());

@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="in.trydevs.tknow.tknow.Activities.PeopleActivity">
 
     <include
-        android:id="@+id/top_bar_main_activity"
+        android:id="@+id/top_bar_people_activity"
         layout="@layout/top_bar" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewMainActivity"
+        android:id="@+id/recyclerViewPeople"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:background="@color/white">

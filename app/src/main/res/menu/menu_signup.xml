@@ -1,12 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity">
+    tools:context="in.trydevs.tknow.tknow.Activities.SignupActivity">
     <item
-        android:id="@+id/action_people_info"
-        android:icon="@drawable/users_icon"
+        android:id="@+id/action_signup"
         android:orderInCategory="100"
-        android:title="@string/action_people"
-        app:showAsAction="always" />
-
+        android:title="@string/action_signup"
+        app:showAsAction="never" />
 </menu>

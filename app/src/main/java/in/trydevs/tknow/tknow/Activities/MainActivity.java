@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     MyAdapterPost adapterPost;
     private Toolbar toolbar;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
+    private BroadcastReceiver mNewMessageBroadcastReciever;
 
 
     @Override
@@ -62,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewMainActivity);
         List<Post> data = new ArrayList<>();
         MyApplication.getWritableDatabase().insertPostData(data);
-        adapterPost = new MyAdapterPost(MainActivity.this, MyApplication.getWritableDatabase().getPostdata());
+        adapterPost = new MyAdapterPost(MainActivity.this, MyApplication.getWritableDatabase().getPostData());
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        recyclerView.addItemDecoration(new SpacesItemDecoration(3));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(5));
         recyclerView.setAdapter(adapterPost);
         // Getting ready GCM
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         .getBoolean(QuickstartPreferences.SENT_TOKEN_TO_SERVER, false);
                 if (!sentToken) {
                     AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
-                    alertBuilder.setTitle("Confirmation link mail.");
+                    alertBuilder.setTitle(getResources().getString(R.string.token_not_got_title));
                     alertBuilder.setMessage(getResources().getString(R.string.token_not_got));
                     alertBuilder
                             .setCancelable(false)
@@ -89,6 +90,14 @@ public class MainActivity extends AppCompatActivity {
                     AlertDialog alertDialog = alertBuilder.create();
                     alertDialog.show();
                 }
+            }
+        };
+        mNewMessageBroadcastReciever = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Post post = intent.getParcelableExtra(getString(R.string.newMessage_broadcast));
+                if (post != null)
+                    adapterPost.NewDataAdded(post);
             }
         };
         if (checkPlayServices()) {
@@ -104,12 +113,15 @@ public class MainActivity extends AppCompatActivity {
         Log.d("checking flow", "on post resume");
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
                 new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
+        LocalBroadcastManager.getInstance(this).registerReceiver(mNewMessageBroadcastReciever,
+                new IntentFilter(getString(R.string.newMessage_broadcast)));
     }
 
     @Override
     protected void onPause() {
         Log.d("checking flow", "on pause");
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mNewMessageBroadcastReciever);
         super.onPause();
     }
 
@@ -143,10 +155,13 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_people_info) {
+            Intent intentPeople = new Intent(MainActivity.this, PeopleActivity.class);
+            startActivity(intentPeople);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }
