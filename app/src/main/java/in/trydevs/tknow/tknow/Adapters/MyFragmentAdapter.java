@@ -4,8 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import in.trydevs.tknow.tknow.Fragments.FragmentChatRoom;
 import in.trydevs.tknow.tknow.Fragments.FragmentClub;
 import in.trydevs.tknow.tknow.Fragments.FragmentGlobalPost;
+import in.trydevs.tknow.tknow.Fragments.FragmentImages;
 import in.trydevs.tknow.tknow.R;
 import in.trydevs.tknow.tknow.extras.MyApplication;
 
@@ -34,6 +36,12 @@ public class MyFragmentAdapter extends FragmentPagerAdapter {
                 break;
             case 1:
                 fragment = new FragmentClub();
+                break;
+            case 2:
+                fragment = new FragmentImages();
+                break;
+            case 3:
+                fragment = new FragmentChatRoom();
                 break;
         }
         return fragment;

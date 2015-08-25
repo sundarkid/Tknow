@@ -70,6 +70,8 @@
     <string-array name="tabs_main_activity">
         <item>World!</item>
         <item>Club</item>
+        <item>Images</item>
+        <item>Chat</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
