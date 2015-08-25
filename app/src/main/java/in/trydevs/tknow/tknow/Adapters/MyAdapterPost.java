@@ -1,7 +1,7 @@
 package in.trydevs.tknow.tknow.Adapters;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +23,11 @@ import in.trydevs.tknow.tknow.R;
  */
 public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHolder> {
 
-    AppCompatActivity context;
+    FragmentActivity context;
     List<Post> data;
     LayoutInflater inflater;
 
-    public MyAdapterPost(AppCompatActivity context, List<Post> data) {
+    public MyAdapterPost(FragmentActivity context, List<Post> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
         this.context = context;
@@ -80,7 +80,7 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
         return data.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    protected class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, title, message, time;
         ImageView image;

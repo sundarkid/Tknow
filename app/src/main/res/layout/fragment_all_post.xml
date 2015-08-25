@@ -2,18 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="in.trydevs.tknow.tknow.Activities.PeopleActivity">
-
-    <include
-        android:id="@+id/top_bar_people_activity"
-        layout="@layout/top_bar" />
+    tools:context="in.trydevs.tknow.tknow.Fragments.FragmentGlobalPost">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewPeople"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:background="@color/navy_blue_dark">
 
     </android.support.v7.widget.RecyclerView>
+
 </LinearLayout>

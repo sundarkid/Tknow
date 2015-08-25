@@ -81,7 +81,7 @@ public class MyAdapterPeople extends RecyclerView.Adapter<MyAdapterPeople.MyHold
         return data.size();
     }
 
-    class MyHolder extends RecyclerView.ViewHolder {
+    protected class MyHolder extends RecyclerView.ViewHolder {
         ImageView photo, fb, twitter;
         TextView name;
 

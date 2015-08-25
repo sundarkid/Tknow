@@ -18,6 +18,7 @@
     <string name="title_activity_signup">Signup</string>
     <string name="Name">Name</string>
     <string name="signup">Signup</string>
+    <string name="signing_in">Sign in please wait</string>
     <string name="clear">Reset</string>
     <string name="mail">e-mail</string>
     <string name="password">Password</string>
@@ -56,12 +57,21 @@
     <string name="title">Post Title</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="rollno">*Roll No: CB.EN.XXXXXXXX</string>
-    <string name="rollnonotnecessary">*Roll no. Not compulsory</string>
+    <string name="rollno">Roll No: CB.EN.XXXXXXXX</string>
+    <string name="notNecessary">*Optional</string>
     <string name="action_signup">Signup</string>
     <string name="title_activity_detailed_post">Details</string>
     <string name="title_activity_people">People</string>
     <string name="got_to_link">Go to the site...</string>
     <string name="action_people">People</string>
+    <string name="title_activity_sign_in">Sign In</string>
+
+
+    <string-array name="tabs_main_activity">
+        <item>World!</item>
+        <item>Club</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -9,10 +9,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -21,29 +20,23 @@ import android.view.MenuItem;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import in.trydevs.tknow.tknow.Adapters.MyAdapterPost;
-import in.trydevs.tknow.tknow.DataClasses.Post;
+import in.trydevs.tknow.tknow.Adapters.MyFragmentAdapter;
 import in.trydevs.tknow.tknow.GCM.QuickstartPreferences;
 import in.trydevs.tknow.tknow.GCM.RegistrationIntentService;
 import in.trydevs.tknow.tknow.R;
-import in.trydevs.tknow.tknow.extras.MyApplication;
-import in.trydevs.tknow.tknow.extras.SpacesItemDecoration;
+import in.trydevs.tknow.tknow.tabs.SlidingTabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
-    RecyclerView recyclerView;
-
+    MyFragmentAdapter fragmentAdapter;
+    private ViewPager viewPager;
+    private SlidingTabLayout slidingTabLayout;
     // For gcm
-    MyAdapterPost adapterPost;
     private Toolbar toolbar;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
-    private BroadcastReceiver mNewMessageBroadcastReciever;
 
 
     @Override
@@ -59,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
         // Setting Top bar 'Tool bar'
         toolbar = (Toolbar) findViewById(R.id.top_bar_main_activity);
         setSupportActionBar(toolbar);
-        // Setting up Recycler View
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewMainActivity);
-        List<Post> data = new ArrayList<>();
-        MyApplication.getWritableDatabase().insertPostData(data);
-        adapterPost = new MyAdapterPost(MainActivity.this, MyApplication.getWritableDatabase().getPostData());
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        recyclerView.addItemDecoration(new SpacesItemDecoration(5));
-        recyclerView.setAdapter(adapterPost);
+        // Setting up view pager and adapter
+        viewPager = (ViewPager) findViewById(R.id.view_pager_main_activity);
+        slidingTabLayout = (SlidingTabLayout) findViewById(R.id.tab_layout_main_activity);
+        fragmentAdapter = new MyFragmentAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(fragmentAdapter);
+        slidingTabLayout.setCustomTabView(R.layout.white_text_tab, R.id.textView);
+        slidingTabLayout.setViewPager(viewPager);
+
         // Getting ready GCM
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
@@ -92,14 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        mNewMessageBroadcastReciever = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Post post = intent.getParcelableExtra(getString(R.string.newMessage_broadcast));
-                if (post != null)
-                    adapterPost.NewDataAdded(post);
-            }
-        };
+
         if (checkPlayServices()) {
             // Start IntentService to register this application with GCM.
             Intent intent = new Intent(this, RegistrationIntentService.class);
@@ -113,15 +99,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d("checking flow", "on post resume");
         LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
                 new IntentFilter(QuickstartPreferences.REGISTRATION_COMPLETE));
-        LocalBroadcastManager.getInstance(this).registerReceiver(mNewMessageBroadcastReciever,
-                new IntentFilter(getString(R.string.newMessage_broadcast)));
     }
 
     @Override
     protected void onPause() {
         Log.d("checking flow", "on pause");
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(mNewMessageBroadcastReciever);
         super.onPause();
     }
 

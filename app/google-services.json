@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_id": "tknow-1022",
+    "project_number": "291722548178",
+    "name": "tknow"
+  },
+  "client": [
+    {
+      "client_info": {
+        "client_id": "android:in.trydevs.tknow.tknow.GCM",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "in.trydevs.tknow.tknow.GCM"
+        }
+      },
+      "oauth_client": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "client_id": "android:in.trydevs.tknow.tknow.GoogleSignIn",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "in.trydevs.tknow.tknow.GoogleSignIn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291722548178-2dbsp5m15jehl1dvs05c8bfbq0igii8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.trydevs.tknow.tknow.GoogleSignIn",
+            "certificate_hash": "57f307782372a006ca440497f177555e16dc8846"
+          }
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "ARTIFACT_VERSION": "1"
+}

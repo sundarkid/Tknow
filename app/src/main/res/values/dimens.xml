@@ -10,6 +10,7 @@
     <dimen name="text">16dp</dimen>
     <dimen name="option_text">16sp</dimen>
     <dimen name="_8dp">8dp</dimen>
+    <dimen name="_4dp">4dp</dimen>
     <dimen name="_16dp">16dp</dimen>
     <dimen name="table_row_margin">20dp</dimen>
     <dimen name="standard_list_item">64dp</dimen>

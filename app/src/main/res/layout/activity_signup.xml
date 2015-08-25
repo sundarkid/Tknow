@@ -3,59 +3,81 @@
     xmlns:whatever="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/navy_blue_dark"
     tools:context="in.trydevs.tknow.tknow.Activities.SignupActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/_16dp">
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/top_bar"
+            layout="@layout/top_bar" />
 
         <com.andreabaccega.widget.FormEditText
-            android:id="@+id/name"
+            android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
+            android:layout_marginTop="@dimen/_4dp"
             android:hint="@string/Name"
             android:padding="@dimen/_8dp"
+            android:textColor="@color/text"
+            android:textColorHint="@color/grey"
             whatever:testType="personName" />
 
         <com.andreabaccega.widget.FormEditText
-            android:id="@+id/email"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
             android:hint="@string/email"
             android:padding="@dimen/_8dp"
+            android:textColor="@color/text"
+            android:textColorHint="@color/grey"
             whatever:testType="email" />
 
         <com.andreabaccega.widget.FormEditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:padding="@dimen/_8dp"
+            android:textColor="@color/text"
+            android:textColorHint="@color/grey"
             whatever:testType="nocheck" />
 
         <com.andreabaccega.widget.FormEditText
+            android:id="@+id/editTextRollNo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
             android:hint="@string/rollno"
             android:padding="@dimen/_8dp"
-            whatever:testType="nocheck" />
+            android:textColor="@color/text"
+            android:textColorHint="@color/grey" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/rollnonotnecessary" />
+            android:layout_margin="@dimen/_8dp"
+            android:paddingRight="@dimen/_16dp"
+            android:text="@string/notNecessary"
+            android:textColor="@color/white" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8dp"
             android:gravity="center"
             android:padding="@dimen/_8dp"
             android:text="@string/privacy_and_terms"
-            android:textColor="@color/blue" />
+            android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,19 +86,24 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8dp"
                 android:layout_weight="1"
-                android:text="@string/signup" />
+                android:background="@color/button_background"
+                android:text="@string/signup"
+                android:textColor="@color/text" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonReset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/_8dp"
                 android:layout_weight="1"
-                android:text="@string/clear" />
+                android:background="@color/button_background"
+                android:text="@string/clear"
+                android:textColor="@color/text" />
         </LinearLayout>
 
     </LinearLayout>

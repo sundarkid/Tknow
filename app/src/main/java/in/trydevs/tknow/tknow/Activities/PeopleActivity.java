@@ -22,7 +22,7 @@ public class PeopleActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerViewPeople);
         MyAdapterPeople adapterPeople = new MyAdapterPeople(PeopleActivity.this, MyApplication.getWritableDatabase().getPeopleData());
         recyclerView.setLayoutManager(new LinearLayoutManager(PeopleActivity.this));
-        recyclerView.addItemDecoration(new SpacesItemDecoration(5));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
         recyclerView.setAdapter(adapterPeople);
         // Setting Top bar 'Tool bar'
         toolbar = (Toolbar) findViewById(R.id.top_bar_people_activity);

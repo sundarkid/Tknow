@@ -1,47 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/_4dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="0dp"
-            android:layout_height="96dp"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="2"
-            android:gravity="center_vertical"
-            android:padding="@dimen/_8dp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </LinearLayout>
-
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        app:cardCornerRadius="8dp">
 
-        <ImageView
-            android:id="@+id/facebook"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="@dimen/_8dp"
-            android:src="@drawable/facebook_icon" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/twitter"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="@dimen/_8dp"
-            android:src="@drawable/twitter_icon" />
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="0dp"
+                android:layout_height="96dp"
+                android:layout_margin="@dimen/_4dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_8dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/facebook"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:padding="@dimen/_8dp"
+                        android:src="@drawable/facebook_icon" />
+
+                    <ImageView
+                        android:id="@+id/twitter"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:padding="@dimen/_8dp"
+                        android:src="@drawable/twitter_icon" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
 </LinearLayout>
